@@ -1,0 +1,7 @@
+* 14th July 2016
+
+1. Consider adding a field for Projects and Hacks
+2. See if headings should have a horizontal bar after the text
+3. Margins are not proper, left and right margins are not same
+4. Add webpage link, after creating the webpage!
+5. Will colors help?
