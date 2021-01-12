@@ -1,0 +1,28 @@
+name: Build Document
+on: [push]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: resume.tex
+          latexmk_use_xelatex: true
+          args: "-pdf -file-line-error -halt-on-error -interaction=nonstopmode"
+          pre_compile: "tlmgr update --all"
+          post_compile: "latexmk -c"
+      - name: Create build directory
+        run: |
+          pwd
+          mkdir build
+          cp resume.pdf index.html build
+      - name: Deploy build to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          keep_files: false
+          commit_message: ${{ github.event.head_commit.message }}
