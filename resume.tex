@@ -1,0 +1,319 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2015 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+%% possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+\documentclass[11pt,a4paper,sans]{moderncv}        
+
+%% moderncv themes style options are 'casual' (default), 'classic', 'banking', 'oldstyle' and 'fancy'
+\moderncvstyle{classic} 
+
+%% https://tex.stackexchange.com/questions/433/vertically-center-text-and-image-in-one-line
+\newcommand{\vcenteredinclude}[1]{\begingroup
+  \setbox0=\hbox{\includegraphics[height=2.5ex]{#1}}%
+  \parbox{\wd0}{\box0}\endgroup}
+\definecolor{darkred}{rgb}{0.55, 0.0, 0.0}
+\newcommand{\colorhref}[3][darkred]{\href{#2}{\color{#1}#3}}
+\newcommand{\labelhref}[3]{#1\,\,\colorhref{#2}{#3}}
+\newcommand{\northeastern}{\colorhref{https://www.northeastern.edu/}{Northeastern University}}
+\newcommand{\nsit}{\colorhref{http://www.nsit.ac.in/}{Netaji Subhas Institute of Technology}}
+\newcommand{\janlink}{\colorhref{http://janvitek.org/}{Dr. Jan Vitek}}
+\newcommand{\aviral}{\colorhref{http://aviral.io/}{Aviral Goel}}
+\newcommand{\filip}{Filip Křikava}
+\newcommand{\alexi}{Alexi Turcotte}
+\newcommand{\jan}{Jan Vitek}
+\newcommand{\gabriel}{Gabriel Scherer}
+\newcommand{\amal}{Amal Ahmed}
+\newcommand{\oli}{Olivier Flückiger}
+\newcommand{\mingho}{Ming-Ho Yee}
+\newcommand{\dotsep}{•\xspace}
+\newcommand{\authorsep}{ • \xspace}
+\newcommand{\hobbysep}{\authorsep}
+\newcommand{\talkvideo}[1]{\faVideoCamera\,\,\,\colorhref{#1}{#1}}
+\newcommand{\talkslide}[1]{\faFilePowerpointO\,\,\,\colorhref{#1}{#1}}
+\newcommand{\talkabstract}[1]{\faFileTextO\,\,\,\colorhref{#1}{#1}}
+\newcommand{\pubdoi}[1]{\aiDoi\,\,\,\colorhref{https://doi.org/#1}{#1}}
+\newcommand{\pubartifact}[1]{\faCube\,\,\,\colorhref{https://doi.org/#1}{#1}}
+
+\newcommand{\oopsla}[1]{\colorhref{https://conf.researchr.org/track/splash-20#1/splash-20#1-oopsla}{OOPSLA'#1}}
+\newcommand{\popl}[1]{\colorhref{https://popl#1.sigplan.org/}{POPL'#1}}
+\newcommand{\splash}[1]{\colorhref{https://20#1.splashcon.org/}{SPLASH'#1}}
+\newcommand{\rebase}[1]{\colorhref{https://20#1.splashcon.org/track/splash-20#1-rebase}{REBASE'#1}}
+\newcommand{\riot}[1]{\colorhref{https://riotworkshop.github.io/RIOT20#1/index.html}{RIOT'#1}}
+\newcommand{\meta}[1]{\colorhref{https://20#1.splashcon.org/home/meta-20#1}{META'#1}}
+\newcommand{\ibmpldaynineteen}{\colorhref{https://researcher.watson.ibm.com/researcher/view_group_subpage.php?id=10263}{PL
+    DAY'19}}
+
+%% color options are 'black', 'blue' (default), 'burgundy', 'green', 'grey', 'orange', 'purple' and 'red'
+\moderncvcolor{black}
+
+
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+\usepackage{xspace}
+
+%% for fontawesome to work correctly with xelatex
+\defaultfontfeatures{Extension = .otf}% adds .otf to end of path when font loaded without ext parameter e.g. \newfontfamily{\FA}{FontAwesome} > \newfontfamily{\FA}{FontAwesome.otf}
+\usepackage{fontawesome}
+\usepackage{academicons}
+\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+% \usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+\usepackage{pgfornament}
+
+% adjust the page margins
+\usepackage[top=1in, left=1in, right=1in]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{20cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% personal data
+\name{Aviral}{Goel}
+%\title{Resumé title}                               % optional, remove / comment the line if not wanted
+%\address{}{+1~(917)~443~0228}{Malden, MA USA}% optional, remove / comment the line if not wanted; the "postcode city" and "country" arguments can be omitted or provided empty
+%% \phone[mobile]{+1~(917)~443~0228}                   % optional, remove / comment the line if not wanted; the optional "type" of the phone can be "mobile" (default), "fixed" or "fax"
+%\phone[fixed]{+2~(345)~678~901}
+%\phone[fax]{+3~(456)~789~012}
+%\email{aviral@aviral.io}                               % optional, remove / comment the line if not wanted
+%\homepage{aviral.io}                         % optional, remove / comment the line if not wanted
+%\social[linkedin]{aviralgoel}                        % optional, remove / comment the line if not wanted
+%\social[twitter]{TheAviralGoel}                             % optional, remove / comment the line if not wanted
+%\social[github]{aviralg}                              % optional, remove / comment the line if not wanted
+\extrainfo{
+  \begin{scriptsize}
+    \begin{tabular}{l}
+      \scriptsize{\textup{\textbf{Phone}: +1~(917)~443~0228}} \\
+      %\scriptsize{\textup{\textbf{Nationality}: India}} \\
+      \scriptsize{\textup{\textbf{Date of Birth}: February 25, 1991}} \\
+      \scriptsize{}\\
+      \scriptsize{}
+    \end{tabular}
+  \end{scriptsize}
+  %\scriptsize{\textup{\faMobile\,\,+1~(917)~443~0228}} \\
+  %\scriptsize{\textup{Nationality: India}}\\
+  %\scriptsize{\textup{Date of Birth: February 25, 1991}}
+  %\scriptsize{\textup{\faHome\,\,Malden, MA USA}}\\
+}
+  % optional, remove / comment the line if not wanted
+%\photo[64pt][0.4pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+%\quote{Some quote}                                 % optional, remove / comment the line if not wanted
+
+% bibliography adjustements (only useful if you make citations in your resume, or print a list of publications using BibTeX)
+%   to show numerical labels in the bibliography (default is to show no labels)
+% \makeatletter\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}\makeatother
+%   to redefine the bibliography heading string ("Publications")
+%\renewcommand{\refname}{Articles}
+
+% bibliography with mutiple entries
+% \usepackage{multibib}
+% \newcites{book,article}{{Books},{Conferences}}
+
+\fancyfoot[EL, OL]{\textcolor{lightgray}{Aviral Goel}}
+\fancyfoot[EC, OC]{\pgfornament[width = 3.0ex, color = lightgray]{1}}
+\fancyfoot[ER, OR]{\textcolor{lightgray}{\today}}
+
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+% \begin{CJK*}{UTF8}{gbsn} % to typeset your resume in Chinese using CJK
+%   ----- resume ---------------------------------------------------------
+\makecvtitle
+\vspace{-1.9cm}
+\hrulefill\newline
+\begin{small}
+\labelhref{\faLink}{http://aviral.io}{aviral.io}\hfill
+\labelhref{\faEnvelope}{mailto:aviral@aviral.io}{aviral@aviral.io}\hfill
+\labelhref{\faGithub}{https://github.com/aviralg}{aviralg}\hfill
+\labelhref{\faTwitter}{https://twitter.com/TheAviralGoel}{@TheAviralGoel}\hfill
+\labelhref{\faLinkedin}{https://www.linkedin.com/in/aviralgoel}{aviralgoel}\hfill
+\labelhref{\aiOrcid}{https://orcid.org/0000-0002-0814-5015}{0000-0002-0814-5015}
+\end{small}
+
+%\begin{center}\pgfornament[width = 3.0ex, color = black]{1}\end{center}
+
+%%I am pursuing a Ph.D. in Computer Science at \northeastern, Boston, USA under the supervision of \janlink.
+
+\section{Research Interests}
+\cvitem{Areas}{Programming Languages \dotsep Software Engineering \dotsep
+  Computer Systems \dotsep Compilers}
+\cvitem{Techniques}{Empirical Evaluation \dotsep Dynamic Analysis \dotsep Static
+Analysis}
+
+\section{Software Skills}
+\cvitem{Languages}{R \dotsep C/C++ \dotsep Python \dotsep Racket} \cvitem{Tools}{Linux \dotsep Git}
+
+\section{Education}
+\cventry{'17--Present}{Ph.D}{}{Computer Science\hfill\footnotesize{\textit{Advised by \janlink}}}{}{\northeastern, Boston, USA} % arguments 3 to 6 can be left empty
+\cventry{'16--'17}{M.S}{}{Computer Science\hfill\footnotesize{GPA--4.0/4.0}}{}{\northeastern, Boston, USA}
+\cventry{'08--'12}{B.E}{}{Electronics and Communication
+  Engineering\hfill\footnotesize{81\%--First Class with Distinction}}{}{\nsit, New Delhi, India}
+
+\section{Industry Experience}
+\cventry{\small{May--Aug'19}}{\small{Oracle Austria GmbH}}{Linz, Austria}{}{}{Research Assistant}
+\cventry{\small{Feb--Dec'15}}{\small{Institute for Stem Cell Biology and
+    Regenerative Medicine}}{Bengaluru, India}{}{}{Technology Manager}
+\cventry{\small{Sep'13--Feb'15}}{\small{National Center for Biological
+    Sciences}}{Bengaluru, India}{}{}{Programmer}
+\cventry{\small{July'12--Aug'13}}{\small{Yahoo!}}{Bengaluru, India}{}{}{Software
+  Engineer}
+\cventry{\small{Jun--July'10}}{\small{Siemens Limited}}{New Delhi, India}{}{}{Intern}
+
+\section{Teaching Experience}
+\cventry{Fall'18}{Intensive Principles of Programming
+  Languages}{}{CS7400}{}{\footnotesize{Ph.D. Teaching Assistant at Northeastern
+    University}}
+\cventry{Fall'17}{Parallel Data Processing in Map
+  Reduce}{}{CS6240}{}{\footnotesize{M.S. Teaching Assistant at Northeastern University}}
+\cventry{Spring'17}{Introduction to Data Management and
+  Processing}{}{DS5110}{}{\footnotesize{M.S. Teaching Assistant at Northeastern
+    University}}
+\cventry{Summer'16}{Algorithms and Data}{}{CS4800}{}{\footnotesize{B.S. Teaching Assistant at Northeastern University}}
+\pagebreak
+\section{Publications}
+\cventry{\oopsla{20}\\{\scriptsize{Virtual}}}{Designing Types for R, Empirically}{}{}{}{\alexi \authorsep
+  \aviral \authorsep \filip \authorsep \jan\\
+  \begin{footnotesize}
+    \pubdoi{10.1145/3428249}
+    \hfill
+    \pubartifact{10.5281/zenodo.4037278}
+  \end{footnotesize}
+  \hfill
+  \vcenteredinclude{artifact-functional}
+  \vcenteredinclude{artifact-reusable}
+  \vcenteredinclude{artifact-available}}
+
+\cventry{\oopsla{19}\\{\scriptsize{Athens \dotsep Greece}}}{On The Design, Implementation, and Use of Laziness in
+  R}{}{}{}
+{\aviral \authorsep \jan\\
+  \begin{footnotesize}
+    \pubdoi{10.1145/3360579}
+    \hfill
+    \pubartifact{10.5281/zenodo.3369573}
+  \end{footnotesize}
+  \hfill
+  \vcenteredinclude{artifact-functional}
+  \vcenteredinclude{artifact-reusable}
+  \vcenteredinclude{artifact-available}
+}
+
+\cventry{\popl{18}\\{\scriptsize{California \dotsep USA}}}{Correctness of Speculative Optimizations with Dynamic
+  Deoptimization}{}{}{} {\oli \authorsep \gabriel \authorsep \mingho \authorsep
+  \aviral \authorsep \amal \authorsep \jan\\
+  \begin{footnotesize}
+    \aiDoi\,\colorhref{https://doi.org/10.1145/3158137}{10.1145/3158137}
+  \end{footnotesize}
+}
+
+\cventry{IGI Global\\{\scriptsize{ISBN: 146664558X}}}{De-Noising, Clustering, Classification, and Representation of Microarray Data for Disease Diagnostics}{Research Developments in Computer Vision and Image Processing: Methodologies and Applications}{}{}{Nitin Baharadwaj \authorsep Sheena Wadhwa \authorsep
+  Pragya Goel \authorsep Isha Sethi \authorsep Chanpreet Singh Arora \\
+  \aviral \authorsep Sonika Bhatnagar \authorsep Harish Parthasarathy\\
+  \begin{footnotesize}
+    \aiDoi\,\colorhref{https://doi.org/10.4018/978-1-4666-4558-5.ch009}{10.4018/978-1-4666-4558-5.ch009}
+  \end{footnotesize}
+}
+
+\section{Conference Talks}
+\cventry{\ibmpldaynineteen{}\\{\scriptsize{IBM \dotsep NY \dotsep USA}}}{On
+  The Design, Implementation, and Use of Laziness in R}{}{}{}{
+  %\begin{footnotesize}
+  %  \talkslide{http://aviral.io/}
+  %\end{footnotesize}
+}
+
+\cventry{\oopsla{19}\\{\scriptsize{Athens \dotsep Greece}}}{On The Design, Implementation, and Use of Laziness in R}{}{}{}{
+  \begin{footnotesize}
+    %\talkslide{http://aviral.io/}\qquad
+    \talkvideo{https://youtu.be/qLxz9HPP6wI}
+  \end{footnotesize}
+}
+
+\cventry{\meta{19}\\{\scriptsize{Athens \dotsep Greece}}}
+  {Meta-Programming in Data Science\hfill\textnormal{Keynote}}{}{}{}{
+  %\begin{footnotesize}
+  %  \talkslide{http://aviral.io/}
+  %\end{footnotesize}
+}
+
+\cventry{\riot{19}\\{\scriptsize{Toulouse
+      \dotsep France}}}{RDT: A Dynamic Tracing Framework for R}{}{}{}{
+  %\begin{footnotesize}
+  %  \talkslide{http://aviral.io/}\qquad\talkabstract{http://aviral.io/}
+  %\end{footnotesize}
+}
+
+
+\section{Invited Talks}
+\cventry{2020}{On The Design, Implementation, and Use of Laziness in R}{}{}{}{
+  \begin{tabular}{ll}
+    Harvard University, USA &  Carnegie Mellon University, USA  \\
+    Cornell University, USA & University of California San Diego, USA \\
+    Princeton University, USA & University of California Riverside, USA \\
+    Purdue University, USA & National University of Singapore, Singapore \\
+    University of Washington, USA\xspace\xspace\xspace\xspace\xspace& University of Colorado Boulder, USA \\
+    Northwestern University, USA & University of Maryland, USA \\
+    University of Utah, USA & University of Wisconsin-Madison, USA \\
+    Rutgers University, USA &  University of Pennsylvania, USA \\
+    University of Kent, UK %& University of California Santa Cruz, USA \\
+    %Tufts University, USA
+  \end{tabular}                                        
+}  
+
+
+%\qquad{\begin{footnotesize} \talkslide{http://aviral.io/} \end{footnotesize}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{Extra 1}                                                               %
+% \cvlistitem{Item 1} \cvlistitem{Item 2} \cvlistitem{Item 3. This item is        %
+%   particularly long and therefore normally spans over several lines. Did you    %
+%   notice the indentation when the line wraps?}                                  %
+%                                                                                 %
+% \section{Extra 2}                                                               %
+% \cvlistdoubleitem{Item 1}{Item 4} \cvlistdoubleitem{Item 2}{Item 5book1}        %
+% \cvlistdoubleitem{Item 3}{Item 6. Like item 3 in the single column list before, %
+%   this item is particularly long to wrap over several lines.}                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \section{References}                                                            %
+% \begin{cvcolumns}                                                               %
+%   \cvcolumn{Category 1}{\begin{itemize}\item Person 1\item Person 2\item Person %
+%       3\end{itemize}} \cvcolumn{Category 2}{Amongst others:\begin{itemize}\item %
+%       Person 1, and\item Person 2\end{itemize}(more upon request)}              %
+%   \cvcolumn[0.5]{All the rest \& some more}{\textit{That} person, and           %
+%     \textbf{those} also (all available upon request).}                          %
+%   \end{cvcolumns}                                                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+
+\section{Service}
+\cventry{\rebase{20}}{Organizer}{}{}{}{}
+\cventry{\oopsla{20}}{Artifact Evaluation Committee + Session Chair}{}{}{}{}
+\cventry{\rebase{19}}{Session Chair}{}{}{}{}
+\cventry{\splash{19}}{Web Chair}{}{}{}{}
+\cventry{\splash{18}}{Web Chair}{}{}{}{}
+
+\newpage
+
+\section{Awards}
+\cventry{\oopsla{20}}{Distinguished Artifact Reviewer}{}{}{}{}
+
+\section{Languages}
+\cvitemwithcomment{Hindi}{Native/Bilingual Proficiency}{}
+\cvitemwithcomment{English}{Full Professional Proficiency}{}
+%
+%\section{Hobbies}
+%\cvitem{}{Cooking \hobbysep Origami}
+
+\end{document}
+
+%% REMOVE FULL STOP: https://latex.org/forum/viewtopic.php?t=25908
