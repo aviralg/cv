@@ -7,10 +7,21 @@
 
 
 %% possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
-\documentclass[11pt,a4paper,sans]{moderncv}        
+\documentclass[11pt,a4paper,sans]{moderncv}
 
 %% moderncv themes style options are 'casual' (default), 'classic', 'banking', 'oldstyle' and 'fancy'
-\moderncvstyle{classic} 
+\moderncvstyle{classic}
+
+%% https://tex.stackexchange.com/questions/400605/removing-periods-at-the-end-of-line-in-moderncv
+\renewcommand*{\cventry}[7][.25em]{%
+  \cvitem[#1]{#2}{%
+    {\bfseries#3}%
+    \ifthenelse{\equal{#4}{}}{}{, {\slshape#4}}%
+    \ifthenelse{\equal{#5}{}}{}{, #5}%
+    \ifthenelse{\equal{#6}{}}{}{, #6}%
+    \strut%                             %Fullstop removed
+    \ifx&#7&%
+    \else{\newline{}\begin{minipage}[t]{\linewidth}\small#7\end{minipage}}\fi}}
 
 %% https://tex.stackexchange.com/questions/433/vertically-center-text-and-image-in-one-line
 \newcommand{\vcenteredinclude}[1]{\begingroup
@@ -28,11 +39,15 @@
 \newcommand{\jan}{Jan Vitek}
 \newcommand{\gabriel}{Gabriel Scherer}
 \newcommand{\amal}{Amal Ahmed}
+\newcommand{\janjecmen}{Jan Ječmen}
+\newcommand{\sebastian}{Sebastián Krynski}
+\newcommand{\pierre}{Pierre Donat-Bouillud}
+\newcommand{\christoph}{Christoph M. Kirsch}
 \newcommand{\oli}{Olivier Flückiger}
 \newcommand{\mingho}{Ming-Ho Yee}
 \newcommand{\dotsep}{•\xspace}
-\newcommand{\authorsep}{ • \xspace}
-\newcommand{\hobbysep}{\authorsep}
+\newcommand{\authorsep}{,\xspace}
+\newcommand{\hobbysep}{•\xspace}
 \newcommand{\talkvideo}[1]{\faVideoCamera\,\,\,\colorhref{#1}{#1}}
 \newcommand{\talkslide}[1]{\faFilePowerpointO\,\,\,\colorhref{#1}{#1}}
 \newcommand{\talkabstract}[1]{\faFileTextO\,\,\,\colorhref{#1}{#1}}
@@ -40,18 +55,21 @@
 \newcommand{\pubartifact}[1]{\faCube\,\,\,\colorhref{https://doi.org/#1}{#1}}
 
 \newcommand{\pltea}{\colorhref{https://pltea.github.io}{PLTea}}
+\newcommand{\icfp}[1]{\colorhref{https://icfp#1.sigplan.org}{ICFP'#1}}
+\newcommand{\scp}[1]{\colorhref{https://www.journals.elsevier.com/science-of-computer-programming}{SCP'#1}}
+
 \newcommand{\oopsla}[1]{\colorhref{https://conf.researchr.org/track/splash-20#1/splash-20#1-oopsla}{OOPSLA'#1}}
+\newcommand{\dls}[1]{\colorhref{https://conf.researchr.org/home/dls-20#1}{DLS'#1}}
 \newcommand{\popl}[1]{\colorhref{https://popl#1.sigplan.org/}{POPL'#1}}
+\newcommand{\icooolps}[1]{\colorhref{https://conf.researchr.org/track/ecoop-issta-20#1/ecoop-issta-20#1-icooolps}{ICOOOLPS'#1}}
 \newcommand{\splash}[1]{\colorhref{https://20#1.splashcon.org/}{SPLASH'#1}}
 \newcommand{\rebase}[1]{\colorhref{https://20#1.splashcon.org/track/splash-20#1-rebase}{REBASE'#1}}
 \newcommand{\riot}[1]{\colorhref{https://riotworkshop.github.io/RIOT20#1/index.html}{RIOT'#1}}
 \newcommand{\meta}[1]{\colorhref{https://20#1.splashcon.org/home/meta-20#1}{META'#1}}
-\newcommand{\ibmpldaynineteen}{\colorhref{https://researcher.watson.ibm.com/researcher/view_group_subpage.php?id=10263}{PL
-    DAY'19}}
+\newcommand{\ibmpldaynineteen}{\colorhref{https://researcher.watson.ibm.com/researcher/view_group_subpage.php?id=10263}{PL DAY'19}}
 
 %% color options are 'black', 'blue' (default), 'burgundy', 'green', 'grey', 'orange', 'purple' and 'red'
 \moderncvcolor{black}
-
 
 \usepackage{fontspec}
 \usepackage{graphicx}
@@ -91,15 +109,14 @@
 %\social[twitter]{TheAviralGoel}                             % optional, remove / comment the line if not wanted
 %\social[github]{aviralg}                              % optional, remove / comment the line if not wanted
 \extrainfo{
-  \begin{scriptsize}
+  %\begin{scriptsize}
     \begin{tabular}{l}
-      \scriptsize{\textup{\textbf{Phone}: +1~(917)~443~0228}} \\
+      \footnotesize{\textup{\textbf{Phone}: +1~(917)~443~0228}} \\
       %\scriptsize{\textup{\textbf{Nationality}: India}} \\
-      \scriptsize{\textup{\textbf{Date of Birth}: February 25, 1991}} \\
-      \scriptsize{}\\
+      \footnotesize{\textup{\textbf{Date of Birth}: February 25, 1991}} \\
       \scriptsize{}
     \end{tabular}
-  \end{scriptsize}
+  %\end{scriptsize}
   %\scriptsize{\textup{\faMobile\,\,+1~(917)~443~0228}} \\
   %\scriptsize{\textup{Nationality: India}}\\
   %\scriptsize{\textup{Date of Birth: February 25, 1991}}
@@ -136,7 +153,7 @@
 \labelhref{\faLink}{http://aviral.io}{aviral.io}\hfill
 \labelhref{\faEnvelope}{mailto:aviral@aviral.io}{aviral@aviral.io}\hfill
 \labelhref{\faGithub}{https://github.com/aviralg}{aviralg}\hfill
-\labelhref{\faTwitter}{https://twitter.com/TheAviralGoel}{@TheAviralGoel}\hfill
+%\labelhref{\faTwitter}{https://twitter.com/TheAviralGoel}{@TheAviralGoel}\hfill
 \labelhref{\faLinkedin}{https://www.linkedin.com/in/aviralgoel}{aviralgoel}\hfill
 \labelhref{\aiOrcid}{https://orcid.org/0000-0002-0814-5015}{0000-0002-0814-5015}
 \end{small}
@@ -145,43 +162,108 @@
 
 %%I am pursuing a Ph.D. in Computer Science at \northeastern, Boston, USA under the supervision of \janlink.
 
-\section{Research Interests}
-\cvitem{Areas}{Programming Languages \dotsep Software Engineering \dotsep
-  Computer Systems \dotsep Compilers}
-\cvitem{Techniques}{Empirical Evaluation \dotsep Dynamic Analysis \dotsep Static
-Analysis}
+\section{Expertise}
+\cvitem{Areas}{Programming Languages \dotsep Software Engineering \dotsep Compilers}
+\cvitem{Techniques}{Dynamic Analysis \dotsep Static Analysis}
 
 \section{Software Skills}
-\cvitem{Languages}{R \dotsep C/C++ \dotsep Python \dotsep Racket} \cvitem{Tools}{Linux \dotsep Git}
+\cvitem{Languages}{R \dotsep C/C++ \dotsep Python \dotsep JavaScript \dotsep
+  HTML \dotsep CSS \dotsep PHP}
+\cvitem{Tools}{Linux \dotsep Git \dotsep GitHub \dotsep Make \dotsep Emacs
+  \dotsep Docker \dotsep Shell}
 
 \section{Education}
-\cventry{'17--Present}{Ph.D}{}{Computer Science\hfill\footnotesize{\textit{Advised by \janlink}}}{}{\northeastern, Boston, USA} % arguments 3 to 6 can be left empty
-\cventry{'16--'17}{M.S}{}{Computer Science\hfill\footnotesize{GPA--4.0/4.0}}{}{\northeastern, Boston, USA}
-\cventry{'08--'12}{B.E}{}{Electronics and Communication
+\cventry{'17--'23}{Ph.D.}{}{Computer Science\hfill\footnotesize{\textit{Advised by \janlink}}}{}{\northeastern, Boston, USA} % arguments 3 to 6 can be left empty
+\cventry{'16--'17}{MS}{}{Computer Science\hfill\footnotesize{GPA--4.0/4.0}}{}{\northeastern, Boston, USA}
+\cventry{'08--'12}{BE}{}{Electronics and Communication
   Engineering\hfill\footnotesize{81\%--First Class with Distinction}}{}{\nsit, New Delhi, India}
 
-\section{Industry Experience}
-\cventry{\small{May--Aug'19}}{\small{Oracle Austria GmbH}}{Linz, Austria}{}{}{Research Assistant}
-\cventry{\small{Feb--Dec'15}}{\small{Institute for Stem Cell Biology and
-    Regenerative Medicine}}{Bengaluru, India}{}{}{Technology Manager}
-\cventry{\small{Sep'13--Feb'15}}{\small{National Center for Biological
-    Sciences}}{Bengaluru, India}{}{}{Programmer}
-\cventry{\small{July'12--Aug'13}}{\small{Yahoo!}}{Bengaluru, India}{}{}{Software
-  Engineer}
-\cventry{\small{Jun--July'10}}{\small{Siemens Limited}}{New Delhi, India}{}{}{Intern}
+\section{Work Experience}
+\cventry{\small{Jan'17--Present}}{Ph.D. Candidate {\normalfont at}
+  \small{Northeastern University}}{Boston, USA}{}{}{
+  Designing a tool to insert strictness and type annotations in R
+    packages.
+    \vskip 1mm
+  Designed a tool to migrate the R language ecosystem from lazy to strict
+    semantics with minimal impact on end-user code.
+    \vskip 1mm
+  Performed large-scale studies of the use of laziness, meta-programming,
+    eval, and first-class environments in the R ecosystem.
+    \vskip 1mm
+  Studied the degree of polymorphism in end-user R code, designed a type
+    language to introduce types to functions in R packages, and implemented a
+    tool to type-check values at function boundaries through runtime contracts.
+    \vskip 1mm
+  Designed an instrumentation framework for R to gather runtime
+    information and a map-reduce style pipeline to analyze tera-bytes of runtime
+    data from millions of lines of R code.}
+
+\cventry{\small{May--Aug'19}}{Research Assistant {\normalfont at} \small{Oracle
+    Austria GmbH}}{Linz, Austria}{}{}{Designed a Java framework to implement
+  BLAS functions for different numeric types in the GraalVM compiler to enable
+  high-level optimizations for numerical programs.}
+
+\cventry{\small{Feb--Dec'15}}{Technology Manager {\normalfont at}
+  \small{InStem}}{Bengaluru, India}{}{}{Implemented an algorithm in C++ for smooth
+  rendering of neuronal networks in a 3D viewer.}
+
+\cventry{\small{Sep'13--Feb'15}}{Programmer {\normalfont at} \small{National
+    Center for Biological Sciences}}{Bengaluru, India}{}{}{Designed a 3D viewer for
+  neuronal networks using OpenSceneGraph, Qt, Python, and C++ to visualize
+  electrical activity from simulations of neuron models.}
+
+\cventry{\small{July'12--Aug'13}}{Software Engineer {\normalfont at}
+  \small{Yahoo!}}{Bengaluru, India}{}{}{
+  Extracted usage metrics for the Yahoo! Toolbar from raw data using Hadoop and
+  Pig Latin and designed a dashboard in PHP, Javascript,
+    HTML, and CSS to display them.}
+
+\cventry{\small{Jun--July'10}}{Intern
+  {\normalfont at} \small{Siemens Limited}}{New Delhi, India}{}{}{Implemented a
+  tool in C++ for managing and reporting differences in software versions across a grid
+  of computers used in a power plant.}
 
 \section{Teaching Experience}
-\cventry{Fall'18}{Intensive Principles of Programming
-  Languages}{}{CS7400}{}{\footnotesize{Ph.D. Teaching Assistant at Northeastern
+\cventry{Fall'18}{CS7400: Intensive Principles of Programming
+  Languages}{}{}{}{\footnotesize{Ph.D. Teaching Assistant at Northeastern
     University}}
-\cventry{Fall'17}{Parallel Data Processing in Map
-  Reduce}{}{CS6240}{}{\footnotesize{M.S. Teaching Assistant at Northeastern University}}
-\cventry{Spring'17}{Introduction to Data Management and
-  Processing}{}{DS5110}{}{\footnotesize{M.S. Teaching Assistant at Northeastern
+\cventry{Fall'17}{CS6240: Parallel Data Processing in Map
+  Reduce}{}{}{}{\footnotesize{M.S. Teaching Assistant at Northeastern University}}
+\cventry{Spring'17}{DS5110: Introduction to Data Management and
+  Processing}{}{}{}{\footnotesize{M.S. Teaching Assistant at Northeastern
     University}}
-\cventry{Summer'16}{Algorithms and Data}{}{CS4800}{}{\footnotesize{B.S. Teaching Assistant at Northeastern University}}
-\pagebreak
+\cventry{Summer'16}{CS4800: Algorithms and Data}{}{}{}{\footnotesize{B.S. Teaching Assistant at Northeastern University}}
 \section{Publications}
+\cventry{\oopsla{21}\\{\scriptsize{Chicago \dotsep USA}}}{Promises Are Made to Be Broken}{}{}{}{\aviral \authorsep
+  \janjecmen \authorsep \sebastian \authorsep \oli \authorsep \jan\\
+  \begin{footnotesize}
+    \pubdoi{10.1145/3485478}
+    \hfill
+    \pubartifact{10.5281/zenodo.5394235}
+  \end{footnotesize}
+  \hfill
+  \vcenteredinclude{artifact-functional}
+  \vcenteredinclude{artifact-reusable}
+  \vcenteredinclude{artifact-available}}
+
+\cventry{\oopsla{21}\\{\scriptsize{Chicago \dotsep USA}}}{What We Eval in the Shadows}{}{}{}{\aviral \authorsep
+  \pierre \authorsep \filip \authorsep \christoph \authorsep \jan\\
+  \begin{footnotesize}
+    \pubdoi{10.1145/3485502}
+    \hfill
+    \pubartifact{10.5281/zenodo.5415230}
+  \end{footnotesize}
+  \hfill
+  \vcenteredinclude{artifact-functional}
+  \vcenteredinclude{artifact-reusable}
+  \vcenteredinclude{artifact-available}}
+
+\cventry{\dls{21}\\{\scriptsize{Chicago \dotsep USA}}}{First-Class Environments
+  in R}{}{}{}{\aviral \authorsep \jan\\
+  \begin{footnotesize}
+    \pubdoi{10.1145/3486602.3486768}
+  \end{footnotesize}}
+
 \cventry{\oopsla{20}\\{\scriptsize{Virtual}}}{Designing Types for R, Empirically}{}{}{}{\alexi \authorsep
   \aviral \authorsep \filip \authorsep \jan\\
   \begin{footnotesize}
@@ -216,45 +298,72 @@ Analysis}
   \end{footnotesize}
 }
 
-\cventry{IGI Global\\{\scriptsize{ISBN: 146664558X}}}{De-Noising, Clustering, Classification, and Representation of Microarray Data for Disease Diagnostics}{Research Developments in Computer Vision and Image Processing: Methodologies and Applications}{}{}{Nitin Baharadwaj \authorsep Sheena Wadhwa \authorsep
-  Pragya Goel \authorsep Isha Sethi \authorsep Chanpreet Singh Arora \\
-  \aviral \authorsep Sonika Bhatnagar \authorsep Harish Parthasarathy\\
+%% \cventry{IGI Global\\{\scriptsize{ISBN: 146664558X}}}{De-Noising, Clustering,
+%%   Classification, and Representation of Microarray Data for Disease
+%%   Diagnostics}{Research Developments in Computer Vision and Image Processing:
+%%   Methodologies and Applications}{}{}{Nitin Baharadwaj \authorsep Sheena Wadhwa
+%%   \authorsep Pragya Goel \authorsep Isha Sethi \authorsep Chanpreet Singh Arora \\
+%%   \aviral \authorsep Sonika Bhatnagar \authorsep Harish Parthasarathy\\
+%%   \begin{footnotesize}
+%%     \aiDoi\,\colorhref{https://doi.org/10.4018/978-1-4666-4558-5.ch009}{10.4018/978-1-4666-4558-5.ch009}
+%%   \end{footnotesize}
+%% }
+
+\section{Conference Talks}
+\cventry{\oopsla{21}}{Promises Are Made to Be Broken}{}{}{}{
   \begin{footnotesize}
-    \aiDoi\,\colorhref{https://doi.org/10.4018/978-1-4666-4558-5.ch009}{10.4018/978-1-4666-4558-5.ch009}
+    % \talkslide{http://aviral.io/}\qquad
+    \talkvideo{https://youtu.be/8L\_a7mhYdyM}
   \end{footnotesize}
 }
 
-\section{Conference Talks}
-\cventry{\ibmpldaynineteen{}\\{\scriptsize{IBM \dotsep NY \dotsep USA}}}{On
-  The Design, Implementation, and Use of Laziness in R}{}{}{}{
-  %\begin{footnotesize}
-  %  \talkslide{http://aviral.io/}
-  %\end{footnotesize}
+\cventry{\oopsla{21}}{What We Eval in the Shadows}{}{}{}{
+  \begin{footnotesize}
+    % \talkslide{http://aviral.io/}\qquad
+    \talkvideo{https://youtu.be/aEPd8ijSHuI}
+  \end{footnotesize}
 }
 
-\cventry{\oopsla{19}\\{\scriptsize{Athens \dotsep Greece}}}{On The Design, Implementation, and Use of Laziness in R}{}{}{}{
+\cventry{\dls{21}}{First-Class Environments in R}{}{}{}{}
+
+\cventry{\icooolps{21}}{Non-Intrusive Migration from Lazy to Eager Evaluation}{}{}{}{}
+
+\cventry{\ibmpldaynineteen{}}{On The Design, Implementation, and Use of Laziness in R}{}{}{}{}
+
+\cventry{\oopsla{19}}{On The Design, Implementation, and Use of Laziness in R}{}{}{}{
   \begin{footnotesize}
     %\talkslide{http://aviral.io/}\qquad
     \talkvideo{https://youtu.be/qLxz9HPP6wI}
   \end{footnotesize}
 }
 
-\cventry{\meta{19}\\{\scriptsize{Athens \dotsep Greece}}}
-  {Meta-Programming in Data Science\hfill\textnormal{Keynote}}{}{}{}{
-  %\begin{footnotesize}
-  %  \talkslide{http://aviral.io/}
-  %\end{footnotesize}
-}
+\cventry{\meta{19}}{Meta-Programming in Data Science\hfill\textnormal{Keynote}}{}{}{}{}
 
-\cventry{\riot{19}\\{\scriptsize{Toulouse
-      \dotsep France}}}{RDT: A Dynamic Tracing Framework for R}{}{}{}{
-  %\begin{footnotesize}
-  %  \talkslide{http://aviral.io/}\qquad\talkabstract{http://aviral.io/}
-  %\end{footnotesize}
-}
+\cventry{\riot{19}}{RDT: A Dynamic Tracing Framework for R}{}{}{}{}
 
+\newpage
 
 \section{Invited Talks}
+\cventry{2022}{Data-Driven Language Ecosystem Migration}{}{}{}{
+  \begin{tabular}{ll}
+    IIT Delhi, India
+  \end{tabular}
+}
+\cventry{2022}{Non-Intrusive Migration from Lazy to Eager Evaluation}{}{}{}{
+  \begin{tabular}{ll}
+    University of California Santa Cruz, USA
+  \end{tabular}
+}
+\cventry{2021}{Non-Intrusive Migration from Lazy to Eager Evaluation}{}{}{}{
+  \begin{tabular}{ll}
+    RStudio, USA
+  \end{tabular}
+}
+\cventry{2021}{On The Design, Implementation, and Use of Laziness in R}{}{}{}{
+  \begin{tabular}{ll}
+    Tufts University, USA \qquad\qquad\xspace\xspace\xspace University of California Santa Cruz, USA \\
+  \end{tabular}
+}
 \cventry{2020}{On The Design, Implementation, and Use of Laziness in R}{}{}{}{
   \begin{tabular}{ll}
     Harvard University, USA &  Carnegie Mellon University, USA  \\
@@ -265,10 +374,9 @@ Analysis}
     Northwestern University, USA & University of Maryland, USA \\
     University of Utah, USA & University of Wisconsin-Madison, USA \\
     Rutgers University, USA &  University of Pennsylvania, USA \\
-    University of Kent, UK %& University of California Santa Cruz, USA \\
-    %Tufts University, USA
-  \end{tabular}                                        
-}  
+    University of Kent, UK
+  \end{tabular}
+}
 
 
 %\qquad{\begin{footnotesize} \talkslide{http://aviral.io/} \end{footnotesize}}
@@ -294,20 +402,22 @@ Analysis}
 %   \cvcolumn[0.5]{All the rest \& some more}{\textit{That} person, and           %
 %     \textbf{those} also (all available upon request).}                          %
 %   \end{cvcolumns}                                                               %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Service}
-\cventry{\pltea}{Organizer}{}{}{}{}
-\cventry{\rebase{20}}{Organizer}{}{}{}{}
-\cventry{\oopsla{20}}{Artifact Evaluation Committee + Session Chair}{}{}{}{}
-\cventry{\rebase{19}}{Session Chair}{}{}{}{}
-\cventry{\splash{19}}{Web Chair}{}{}{}{}
-\cventry{\splash{18}}{Web Chair}{}{}{}{}
-
-\newpage
+\cventry{\scp{21}}{\normalfont Reviewer}{}{}{}{}
+\cventry{\rebase{21}}{\normalfont Co-Chair}{}{}{}{}
+\cventry{\splash{21}}{\normalfont PLTea Chair}{}{}{}{}
+\cventry{\icfp{21}}{\normalfont PLTea Organizer}{}{}{}{}
+\cventry{\pltea}{\normalfont Organizer}{}{}{}{}
+\cventry{\rebase{20}}{\normalfont Co-Chair}{}{}{}{}
+\cventry{\oopsla{20}}{\normalfont Artifact Evaluation Committee and Session Chair}{}{}{}{}
+\cventry{\rebase{19}}{\normalfont Session Chair}{}{}{}{}
+\cventry{\splash{19}}{\normalfont Web Chair}{}{}{}{}
+\cventry{\splash{18}}{\normalfont Web Chair}{}{}{}{}
 
 \section{Awards}
-\cventry{\oopsla{20}}{Distinguished Artifact Reviewer}{}{}{}{}
+\cventry{\oopsla{20}}{\normalfont Distinguished Artifact Reviewer}{}{}{}{}
 
 \section{Languages}
 \cvitemwithcomment{Hindi}{Native/Bilingual Proficiency}{}
